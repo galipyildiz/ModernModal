@@ -43,61 +43,11 @@ export const ModernModal: FC<ModernModalProps> = ({
     };
   }, [isOpen]);
 
-  const getDialogStyles = (): CSSProperties => {
-    const baseDecreaseValue = 128;
-    const baseStyles: CSSProperties = {
-      border: "2px solid red",
-      boxSizing: "border-box",
-      overflowY: "auto",
-      maxHeight: `calc(100vh - ${baseDecreaseValue}px)`,
-      minWidth: "300px",
-    };
-    switch (size) {
-      case "fullscreen":
-        return {
-          ...baseStyles,
-          width: "100vw",
-          height: "100vh",
-          top: 0,
-          left: 0,
-          maxHeight: "100vh",
-        };
-      case "xlarge":
-        return {
-          ...baseStyles,
-          width: `calc(100vw - ${baseDecreaseValue * 2}px)`,
-        };
-      case "large":
-        return {
-          ...baseStyles,
-          width: `calc(100vw - ${baseDecreaseValue * 4}px)`,
-        };
-      case "medium":
-        return {
-          ...baseStyles,
-          width: `calc(100vw - ${baseDecreaseValue * 6}px)`,
-        };
-      case "small":
-        return {
-          ...baseStyles,
-          width: `calc(100vw - ${baseDecreaseValue * 8}px)`,
-        };
-      case "xsmall":
-        return {
-          ...baseStyles,
-          width: `calc(100vw - ${baseDecreaseValue * 10}px)`,
-        };
-      default:
-        return { ...baseStyles };
-    }
-  };
-
   return (
     isOpen && (
       <dialog
         ref={modernModalRef}
-        className="modern-modal"
-        style={getDialogStyles()}
+        className={`modern-modal modern-modal-${size}`}
         open={isOpen}
         onClose={onClose}
       >

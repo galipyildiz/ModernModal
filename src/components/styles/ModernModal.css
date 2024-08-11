@@ -2,7 +2,52 @@
 
 .modern-modal {
   padding: 0px;
+  border: 2px solid red;
+  box-sizing: border-box;
+  overflow-y: auto;
+  min-width: 300px;
+  max-height: calc(100vh - 128px);
 }
+/* Different sizes for the modal */
+.modern-modal-xsmall {
+  width: calc(100vw - 88vw); /* 12% of the viewport width */
+  min-width: calc(100vw - 90vw); /* 10% of the viewport width */
+  max-width: calc(100vw - 88vw); /* 12% of the viewport width */
+}
+
+.modern-modal-small {
+  width: calc(100vw - 78vw); /* 22% of the viewport width */
+  min-width: calc(100vw - 80vw); /* 20% of the viewport width */
+  max-width: calc(100vw - 78vw); /* 22% of the viewport width */
+}
+
+.modern-modal-medium {
+  width: calc(100vw - 58vw); /* 42% of the viewport width */
+  min-width: calc(100vw - 60vw); /* 40% of the viewport width */
+  max-width: calc(100vw - 58vw); /* 42% of the viewport width */
+}
+
+.modern-modal-large {
+  width: calc(100vw - 38vw); /* 62% of the viewport width */
+  min-width: calc(100vw - 40vw); /* 60% of the viewport width */
+  max-width: calc(100vw - 38vw); /* 62% of the viewport width */
+}
+
+.modern-modal-xlarge {
+  width: calc(100vw - 18vw); /* 82% of the viewport width */
+  min-width: calc(100vw - 20vw); /* 80% of the viewport width */
+  max-width: calc(100vw - 18vw); /* 82% of the viewport width */
+}
+
+.modern-modal-fullscreen {
+  max-width: 100vw;
+  min-width: 100vw;
+  max-height: 100vh;
+  min-height: 100vh;
+  top: 0;
+  left: 0;
+}
+
 .modern-modal-header {
   border: 1px solid black;
   display: flex;
