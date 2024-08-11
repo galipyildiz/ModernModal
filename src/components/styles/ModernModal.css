@@ -1,0 +1,19 @@
+@import "../styles/variable.css";
+
+.modern-modal {
+  padding: 0px;
+}
+.modern-modal-header {
+  border: 1px solid black;
+  display: flex;
+}
+.modern-modal-close-btn {
+  margin-left: auto;
+  background-color: inherit;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+}
+.modern-modal-content {
+  padding: 16px;
+}
