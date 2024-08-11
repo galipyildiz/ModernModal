@@ -2,13 +2,29 @@ import React, { useState } from "react";
 import { ModernModal } from "../src/components/ModernModal";
 
 const App = () => {
-  const [fullScreenIsOpen, setFullScreenIsOpen] = useState<boolean>(false);
-  const [xlargeIsOpen, setXlargeIsOpen] = useState<boolean>(false);
-  const [largeIsOpen, setLargeIsOpen] = useState<boolean>(false);
-  const [mediumIsOpen, setMediumIsOpen] = useState<boolean>(true);
-  const [smallIsOpen, setSmallIsOpen] = useState<boolean>(false);
-  const [xsmallIsOpen, setXsmallIsOpen] = useState<boolean>(false);
-  const [noneSizeOpen, setNoneSizeOpen] = useState<boolean>(false);
+  const [modalState, setModalState] = useState({
+    fullscreen: false,
+    fullscreenWithoutContent: false,
+    xlarge: false,
+    xlargeWithoutContent: false,
+    large: false,
+    largeWithoutContent: false,
+    medium: true,
+    mediumWithoutContent: false,
+    small: false,
+    smallWithoutContent: false,
+    xsmall: false,
+    xsmallWithoutContent: false,
+    noneSize: false,
+    noneSizeWithoutContent: false,
+  });
+
+  const toggleModal = (size: any) => {
+    setModalState((prevState) => ({
+      ...prevState,
+      [size]: !prevState[size as keyof typeof prevState],
+    }));
+  };
 
   const getModalContent = () => {
     return (
@@ -240,74 +256,134 @@ const App = () => {
       {
         // prettier-ignore
         <>
-          <button onClick={() => (fullScreenIsOpen ? setFullScreenIsOpen(false) : setFullScreenIsOpen(true))}>
-            FullScreen 
+          <button onClick={() => toggleModal("fullscreen")}>
+            fullscreen 
           </button>
-          <button onClick={() => (xlargeIsOpen ? setXlargeIsOpen(false) : setXlargeIsOpen(true))}>
+          <button onClick={() => toggleModal("xlarge")}>
             XLarge
           </button>
-          <button onClick={() => (largeIsOpen ? setLargeIsOpen(false) : setLargeIsOpen(true))}>
+          <button onClick={() => toggleModal("large")}>
             Large
           </button>
-          <button onClick={() => (mediumIsOpen ? setMediumIsOpen(false) : setMediumIsOpen(true))}>
+          <button onClick={() => toggleModal("medium")}>
             Medium 
           </button>
-          <button onClick={() => (smallIsOpen ? setSmallIsOpen(false) : setSmallIsOpen(true))}>
+          <button onClick={() => toggleModal("small")}>
             Small 
           </button>
-          <button onClick={() => (xsmallIsOpen ? setXsmallIsOpen(false) : setXsmallIsOpen(true))}>
+          <button onClick={() => toggleModal("xsmall")}>
             XSmall 
           </button>
-          <button onClick={() => (noneSizeOpen ? setNoneSizeOpen(false) : setNoneSizeOpen(true))}>
+          <button onClick={() => toggleModal("noneSize")}>
             Without Size
+          </button>
+          <br />
+          <button onClick={() => toggleModal("fullscreenWithoutContent")}>
+            fullscreen Without Content 
+          </button>
+          <button onClick={() => toggleModal("xlargeWithoutContent")}>
+            XLarge Without Content 
+          </button>
+          <button onClick={() => toggleModal("largeWithoutContent")}>
+            Large Without Content
+          </button>
+          <button onClick={() => toggleModal("mediumWithoutContent")}>
+            Medium Without Content
+          </button>
+          <button onClick={() => toggleModal("smallWithoutContent")}>
+            Small Without Content
+          </button>
+          <button onClick={() => toggleModal("xsmallWithoutContent")}>
+            XSmall Without Content
+          </button>
+          <button onClick={() => toggleModal("noneSizeWithoutContent")}>
+            Without Size Without Content
           </button>
         </>
       }
       <ModernModal
         size="fullscreen"
-        isOpen={fullScreenIsOpen}
-        onClose={() => setFullScreenIsOpen(false)}
+        isOpen={modalState.fullscreen}
+        onClose={() => toggleModal("fullscreen")}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         size="xlarge"
-        isOpen={xlargeIsOpen}
-        onClose={() => setXlargeIsOpen(false)}
+        isOpen={modalState.xlarge}
+        onClose={() => toggleModal("xlarge")}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         size="large"
-        isOpen={largeIsOpen}
-        onClose={() => setLargeIsOpen(false)}
+        isOpen={modalState.large}
+        onClose={() => toggleModal("large")}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         size="medium"
-        isOpen={mediumIsOpen}
-        onClose={() => setMediumIsOpen(false)}
+        isOpen={modalState.medium}
+        onClose={() => toggleModal("medium")}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         size="small"
-        isOpen={smallIsOpen}
-        onClose={() => setSmallIsOpen(false)}
+        isOpen={modalState.small}
+        onClose={() => toggleModal("small")}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         size="xsmall"
-        isOpen={xsmallIsOpen}
-        onClose={() => setXsmallIsOpen(false)}
+        isOpen={modalState.xsmall}
+        onClose={() => toggleModal("xsmall")}
       >
         {getModalContent()}
       </ModernModal>
-      <ModernModal isOpen={noneSizeOpen} onClose={() => setNoneSizeOpen(false)}>
+      <ModernModal
+        isOpen={modalState.noneSize}
+        onClose={() => toggleModal("noneSize")}
+      >
         {getModalContent()}
       </ModernModal>
+      {/* without content */}
+      <ModernModal
+        size="fullscreen"
+        isOpen={modalState.fullscreenWithoutContent}
+        onClose={() => toggleModal("fullscreenWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        size="xlarge"
+        isOpen={modalState.xlargeWithoutContent}
+        onClose={() => toggleModal("xlargeWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        size="large"
+        isOpen={modalState.largeWithoutContent}
+        onClose={() => toggleModal("largeWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        size="medium"
+        isOpen={modalState.mediumWithoutContent}
+        onClose={() => toggleModal("mediumWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        size="small"
+        isOpen={modalState.smallWithoutContent}
+        onClose={() => toggleModal("smallWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        size="xsmall"
+        isOpen={modalState.xsmallWithoutContent}
+        onClose={() => toggleModal("xsmallWithoutContent")}
+      ></ModernModal>
+      <ModernModal
+        isOpen={modalState.noneSizeWithoutContent}
+        onClose={() => toggleModal("noneSizeWithoutContent")}
+      ></ModernModal>
     </div>
   );
 };
