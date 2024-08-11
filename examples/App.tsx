@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { ModernModal } from "../src/components/ModernModal";
+import "./App.css";
 
 const App = () => {
   const [modalState, setModalState] = useState({
@@ -256,51 +257,28 @@ const App = () => {
       {
         // prettier-ignore
         <>
-          <button onClick={() => toggleModal("fullscreen")}>
-            fullscreen 
-          </button>
-          <button onClick={() => toggleModal("xlarge")}>
-            XLarge
-          </button>
-          <button onClick={() => toggleModal("large")}>
-            Large
-          </button>
-          <button onClick={() => toggleModal("medium")}>
-            Medium 
-          </button>
-          <button onClick={() => toggleModal("small")}>
-            Small 
-          </button>
-          <button onClick={() => toggleModal("xsmall")}>
-            XSmall 
-          </button>
-          <button onClick={() => toggleModal("noneSize")}>
-            Without Size
-          </button>
-          <br />
-          <button onClick={() => toggleModal("fullscreenWithoutContent")}>
-            fullscreen Without Content 
-          </button>
-          <button onClick={() => toggleModal("xlargeWithoutContent")}>
-            XLarge Without Content 
-          </button>
-          <button onClick={() => toggleModal("largeWithoutContent")}>
-            Large Without Content
-          </button>
-          <button onClick={() => toggleModal("mediumWithoutContent")}>
-            Medium Without Content
-          </button>
-          <button onClick={() => toggleModal("smallWithoutContent")}>
-            Small Without Content
-          </button>
-          <button onClick={() => toggleModal("xsmallWithoutContent")}>
-            XSmall Without Content
-          </button>
-          <button onClick={() => toggleModal("noneSizeWithoutContent")}>
-            Without Size Without Content
-          </button>
+          <div className="button-group">
+            <button onClick={() => toggleModal("fullscreen")}>Fullscreen</button>
+            <button onClick={() => toggleModal("xlarge")}>XLarge</button>
+            <button onClick={() => toggleModal("large")}>Large</button>
+            <button onClick={() => toggleModal("medium")}>Medium</button>
+            <button onClick={() => toggleModal("small")}>Small</button>
+            <button onClick={() => toggleModal("xsmall")}>XSmall</button>
+            <button onClick={() => toggleModal("noneSize")}>Without Size</button>
+          </div>
+          <div className="button-group">
+            <button onClick={() => toggleModal("fullscreenWithoutContent")}>Fullscreen Without Content</button>
+            <button onClick={() => toggleModal("xlargeWithoutContent")}>XLarge Without Content</button>
+            <button onClick={() => toggleModal("largeWithoutContent")}>Large Without Content</button>
+            <button onClick={() => toggleModal("mediumWithoutContent")}>Medium Without Content</button>
+            <button onClick={() => toggleModal("smallWithoutContent")}>Small Without Content</button>
+            <button onClick={() => toggleModal("xsmallWithoutContent")}>XSmall Without Content</button>
+            <button onClick={() => toggleModal("noneSizeWithoutContent")}>Without Size Without Content</button>
+          </div>
         </>
       }
+      {/* with content */}
+
       <ModernModal
         size="fullscreen"
         isOpen={modalState.fullscreen}
