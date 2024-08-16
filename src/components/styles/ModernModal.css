@@ -2,13 +2,17 @@
 
 .modern-modal {
   padding: 0px;
-  border: 2px solid red;
   box-sizing: border-box;
-  overflow-y: auto;
+  overflow-y: hidden;
   min-width: 300px;
   max-height: calc(100vh - 128px);
+  min-height: 200px;
   z-index: 1000;
   top: 25px;
+  border-radius: 3px;
+  background-color: #ffffff;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
+  border: 1px solid black;
 }
 /* Different sizes for the modal */
 .modern-modal-xsmall {
@@ -51,16 +55,27 @@
 }
 
 .modern-modal-header {
-  border: 1px solid black;
+  border-bottom: 1px solid black;
   display: flex;
+  padding: 5px 10px;
+  font-size: 1.5rem;
+  font-weight: bold;
 }
 .modern-modal-close-btn {
   margin-left: auto;
   background-color: inherit;
-  border: none;
-  padding: 0;
+  border: 0;
+  padding: 5px 10px;
   cursor: pointer;
+  border-radius: 50%;
+  transition: background-color 0.4s ease,transform 0.3s ease;
+}
+.modern-modal-close-btn:hover {
+  background-color: rgba(0, 0, 255, 0.1); /* Daha hafif bir mavi arka plan */
+  transform: scale(1.05); /* Hafif bir büyüme efekti ekleyerek daha modern bir his */
 }
 .modern-modal-content {
   padding: 16px;
+  overflow-y: auto; 
+  max-height: 70vh;
 }
