@@ -1,11 +1,6 @@
-import React, {
-  CSSProperties,
-  FC,
-  SyntheticEvent,
-  useEffect,
-  useRef,
-} from "react";
+import React, { FC, SyntheticEvent, useEffect, useRef } from "react";
 import "./styles/ModernModal.css";
+import Draggable from "react-draggable";
 
 export interface ModernModalProps {
   isOpen: boolean;
@@ -14,6 +9,7 @@ export interface ModernModalProps {
   ) => void;
   children?: React.ReactNode;
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "fullscreen";
+  isDraggable?: boolean;
 }
 
 export const ModernModal: FC<ModernModalProps> = ({
@@ -21,6 +17,7 @@ export const ModernModal: FC<ModernModalProps> = ({
   onClose,
   children,
   size,
+  isDraggable,
 }) => {
   const modernModalRef = useRef<HTMLDialogElement>(null);
 
@@ -45,28 +42,43 @@ export const ModernModal: FC<ModernModalProps> = ({
 
   return (
     isOpen && (
-      <dialog
-        ref={modernModalRef}
-        className={`modern-modal modern-modal-${size}`}
-        open={isOpen}
-        onClose={onClose}
+      <Draggable
+        disabled={!isDraggable || size == "fullscreen"}
+        handle=".modern-modal-header"
       >
-        <div>
-          <div className="modern-modal-header">
-            {/* ModalHeader */}
-            <button
-              className="modern-modal-close-btn"
-              onClick={() => onClose(undefined)}
+        <dialog
+          ref={modernModalRef}
+          className={`modern-modal modern-modal-${size}`}
+          open={isOpen}
+          onClose={onClose}
+        >
+          <div>
+            <div
+              className={`modern-modal-header ${
+                isDraggable && size != "fullscreen" && "cursor-move"
+              }`}
             >
-              X
-            </button>
+              {/* ModalHeader */}
+              <button
+                className="modern-modal-close-btn"
+                onClick={() => onClose(undefined)}
+              >
+                X
+              </button>
+            </div>
+            <div
+              className={`${
+                size == "fullscreen"
+                  ? "modern-modal-content-fullscreen"
+                  : "modern-modal-content"
+              }`}
+            >
+              {/* ModalContent */}
+              {children}
+            </div>
           </div>
-          <div className="modern-modal-content">
-            {/* ModalContent */}
-            {children}
-          </div>
-        </div>
-      </dialog>
+        </dialog>
+      </Draggable>
     )
   );
 };
