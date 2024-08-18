@@ -283,6 +283,7 @@ const App = () => {
         size="fullscreen"
         isOpen={modalState.fullscreen}
         onClose={() => toggleModal("fullscreen")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -290,6 +291,7 @@ const App = () => {
         size="xlarge"
         isOpen={modalState.xlarge}
         onClose={() => toggleModal("xlarge")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -297,6 +299,7 @@ const App = () => {
         size="large"
         isOpen={modalState.large}
         onClose={() => toggleModal("large")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -304,6 +307,7 @@ const App = () => {
         size="medium"
         isOpen={modalState.medium}
         onClose={() => toggleModal("medium")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -311,6 +315,7 @@ const App = () => {
         size="small"
         isOpen={modalState.small}
         onClose={() => toggleModal("small")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -318,12 +323,14 @@ const App = () => {
         size="xsmall"
         isOpen={modalState.xsmall}
         onClose={() => toggleModal("xsmall")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
       <ModernModal
         isOpen={modalState.noneSize}
         onClose={() => toggleModal("noneSize")}
+        isDraggable={true}
       >
         {getModalContent()}
       </ModernModal>
@@ -332,35 +339,42 @@ const App = () => {
         size="fullscreen"
         isOpen={modalState.fullscreenWithoutContent}
         onClose={() => toggleModal("fullscreenWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         size="xlarge"
         isOpen={modalState.xlargeWithoutContent}
         onClose={() => toggleModal("xlargeWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         size="large"
         isOpen={modalState.largeWithoutContent}
         onClose={() => toggleModal("largeWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         size="medium"
         isOpen={modalState.mediumWithoutContent}
         onClose={() => toggleModal("mediumWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         size="small"
         isOpen={modalState.smallWithoutContent}
         onClose={() => toggleModal("smallWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         size="xsmall"
         isOpen={modalState.xsmallWithoutContent}
         onClose={() => toggleModal("xsmallWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
       <ModernModal
         isOpen={modalState.noneSizeWithoutContent}
         onClose={() => toggleModal("noneSizeWithoutContent")}
+        isDraggable={true}
       ></ModernModal>
     </div>
   );
