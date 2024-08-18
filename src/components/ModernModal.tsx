@@ -1,4 +1,10 @@
-import React, { FC, SyntheticEvent, useEffect, useRef } from "react";
+import React, {
+  CSSProperties,
+  FC,
+  SyntheticEvent,
+  useEffect,
+  useRef,
+} from "react";
 import "./styles/ModernModal.css";
 import Draggable from "react-draggable";
 
@@ -10,6 +16,7 @@ export interface ModernModalProps {
   children?: React.ReactNode;
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "fullscreen";
   isDraggable?: boolean;
+  style?: CSSProperties;
 }
 
 export const ModernModal: FC<ModernModalProps> = ({
@@ -18,6 +25,7 @@ export const ModernModal: FC<ModernModalProps> = ({
   children,
   size,
   isDraggable,
+  style,
 }) => {
   const modernModalRef = useRef<HTMLDialogElement>(null);
 
@@ -51,6 +59,7 @@ export const ModernModal: FC<ModernModalProps> = ({
           className={`modern-modal modern-modal-${size}`}
           open={isOpen}
           onClose={onClose}
+          style={style}
         >
           <div>
             <div
