@@ -17,6 +17,7 @@ export interface ModernModalProps {
   size?: "xsmall" | "small" | "medium" | "large" | "xlarge" | "fullscreen";
   isDraggable?: boolean;
   style?: CSSProperties;
+  header?: React.ReactElement<HTMLElement>;
 }
 
 export const ModernModal: FC<ModernModalProps> = ({
@@ -26,6 +27,7 @@ export const ModernModal: FC<ModernModalProps> = ({
   size,
   isDraggable,
   style,
+  header,
 }) => {
   const modernModalRef = useRef<HTMLDialogElement>(null);
 
@@ -68,6 +70,7 @@ export const ModernModal: FC<ModernModalProps> = ({
               }`}
             >
               {/* ModalHeader */}
+              {header}
               <button
                 className="modern-modal-close-btn"
                 onClick={() => onClose(undefined)}
